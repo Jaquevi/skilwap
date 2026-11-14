@@ -1,0 +1,185 @@
+{
+  "skills": [
+    {
+      "id": 1,
+      "author": {
+        "name": "Sofía Valenzuela",
+        "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+        "rating": 4.9,
+        "reviewsCount": 28,
+        "location": "Lima, Perú"
+      },
+      "category": "Idiomas",
+      "teaches": "Inglés Avanzado / Conversacional (C1)",
+      "teachesLevel": "Avanzado",
+      "wants": "Desarrollo Frontend con React / JS",
+      "mode": "Online (Zoom / Meet)",
+      "description": "Traductora profesional con 4 años de experiencia viviendo en el extranjero. Quiero aprender React para crear mi propio sitio web de servicios.",
+      "badges": [
+        "Verificado",
+        "SuperSwapper"
+      ]
+    },
+    {
+      "id": 2,
+      "author": {
+        "name": "Mateo Morales",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+        "rating": 5,
+        "reviewsCount": 42,
+        "location": "Bogotá, Colombia"
+      },
+      "category": "Programación & Tech",
+      "teaches": "Python & Análisis de Datos (Pandas / SQL)",
+      "teachesLevel": "Experto",
+      "wants": "Diseño UI/UX en Figma y Design Systems",
+      "mode": "Online / Remoto",
+      "description": "Data Engineer en fintech. Enseño fundamentos de Python y pipelines de datos a cambio de mentoría práctica en diseño de interfaces limpias.",
+      "badges": [
+        "Top Mentor",
+        "Tech Lead"
+      ]
+    },
+    {
+      "id": 3,
+      "author": {
+        "name": "Camila Rossi",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+        "rating": 4.85,
+        "reviewsCount": 19,
+        "location": "Buenos Aires, Argentina"
+      },
+      "category": "Diseño & Creatividad",
+      "teaches": "Branding, Identidad Visual & Illustrator",
+      "teachesLevel": "Avanzado",
+      "wants": "Alemán Básico o Italiano",
+      "mode": "Online / Híbrido",
+      "description": "Diseñadora gráfica freelance. Puedo crear tu guía de marca o enseñarte ilustración vectorial a cambio de clases dinámicas de idiomas europeos.",
+      "badges": [
+        "Verificado"
+      ]
+    },
+    {
+      "id": 4,
+      "author": {
+        "name": "Diego Mendoza",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+        "rating": 4.95,
+        "reviewsCount": 35,
+        "location": "Santiago, Chile"
+      },
+      "category": "Música & Audio",
+      "teaches": "Guitarra Acústica & Teoría Musical",
+      "teachesLevel": "Intermedio - Alto",
+      "wants": "Marketing Digital & Pauta en Meta Ads",
+      "mode": "Online (Video)",
+      "description": "Músico independiente y profesor de guitarra. Te enseño acordes, ritmo y teoría a cambio de estrategias para impulsar lanzamientos musicales.",
+      "badges": [
+        "Popular"
+      ]
+    },
+    {
+      "id": 5,
+      "author": {
+        "name": "Valeria Quispe",
+        "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80",
+        "rating": 4.9,
+        "reviewsCount": 15,
+        "location": "Arequipa, Perú"
+      },
+      "category": "Negocios & Marketing",
+      "teaches": "Estrategia SEO & Posicionamiento Web",
+      "teachesLevel": "Experto",
+      "wants": "Edición de Video en Premiere / CapCut",
+      "mode": "Online",
+      "description": "Consultora SEO para startups. Ayudo a posicionar proyectos en Google y busco aprender producción y edición de reels dinámicos.",
+      "badges": [
+        "Destacado"
+      ]
+    },
+    {
+      "id": 6,
+      "author": {
+        "name": "Andrés Carrillo",
+        "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80",
+        "rating": 4.8,
+        "reviewsCount": 22,
+        "location": "Ciudad de México, México"
+      },
+      "category": "Fotografía & Video",
+      "teaches": "Fotografía con Smartphone & Lightroom",
+      "teachesLevel": "Avanzado",
+      "wants": "Conversación en Francés (A2 - B1)",
+      "mode": "Online",
+      "description": "Fotógrafo documental. Te enseño composición, iluminación natural y retoque profesional desde el celular a cambio de practicar francés.",
+      "badges": [
+        "Creativo"
+      ]
+    },
+    {
+      "id": 7,
+      "author": {
+        "name": "Lucía Flores",
+        "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+        "rating": null,
+        "location": "Lima, Perú"
+      },
+      "category": "Diseño & Creatividad",
+      "teaches": "Ilustración digital con Procreate",
+      "teachesLevel": "Intermedio",
+      "wants": "Inglés conversacional",
+      "mode": "Online",
+      "description": "Puedo compartir lo que sé sobre ilustración digital con procreate y me gustaría aprender inglés conversacional.",
+      "badges": []
+    },
+    {
+      "id": 8,
+      "author": {
+        "name": "Daniel Vega",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+        "rating": null,
+        "location": "Cusco, Perú"
+      },
+      "category": "Programación & Tech",
+      "teaches": "React y JavaScript para principiantes",
+      "teachesLevel": "Intermedio",
+      "wants": "Producción musical",
+      "mode": "Online",
+      "description": "Puedo compartir lo que sé sobre react y javascript para principiantes y me gustaría aprender producción musical.",
+      "badges": []
+    },
+    {
+      "id": 9,
+      "author": {
+        "name": "María León",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+        "rating": null,
+        "location": "Lima, Perú"
+      },
+      "category": "Idiomas",
+      "teaches": "Francés para viajes",
+      "teachesLevel": "Intermedio",
+      "wants": "Fotografía de retratos",
+      "mode": "Online",
+      "description": "Puedo compartir lo que sé sobre francés para viajes y me gustaría aprender fotografía de retratos.",
+      "badges": []
+    },
+    {
+      "id": 10,
+      "author": {
+        "name": "Gabriel Ríos",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+        "rating": null,
+        "location": "Trujillo, Perú"
+      },
+      "category": "Música & Audio",
+      "teaches": "Grabación de audio en casa",
+      "teachesLevel": "Intermedio",
+      "wants": "Diseño de interfaces con Figma",
+      "mode": "Online",
+      "description": "Puedo compartir lo que sé sobre grabación de audio en casa y me gustaría aprender diseño de interfaces con figma.",
+      "badges": []
+    }
+  ],
+  "proposals": []
+}
