@@ -38,3 +38,12 @@ Las publicaciones y propuestas se guardan en `db.json` y se conservan al recarga
 - [src/components/skills](src/components/skills) contiene el catálogo y los formularios de publicación y propuesta.
 
 La interfaz usa React y Tailwind CSS, y la navegación usa React Router. Para compilar el proyecto, ejecuta `npm run build`. Para revisar el código, ejecuta `npm run lint`.
+
+## Publicar en Netlify
+
+1. Importa el repositorio de GitHub y selecciona la rama `main`. [netlify.toml](netlify.toml) define la versión de Node.js, el comando de compilación y la carpeta `dist`. También permite abrir o recargar enlaces como `/habilidades` directamente.
+2. Para usar el catálogo y los formularios en la web publicada, aloja la API en un servicio que pueda ejecutarla y conservar los datos. Debe ofrecer `GET /skills`, `POST /skills` y `POST /proposals` mediante HTTPS y permitir solicitudes desde el dominio de Netlify (CORS).
+3. En las variables de entorno de Netlify, configura `VITE_API_URL` con la URL base pública de la API, sin añadir `/skills` ni una barra final. Después, inicia un nuevo deploy para que Vite incorpore ese valor.
+4. En la URL publicada, abre `/habilidades` directamente, recarga la página y comprueba que aparezcan las tarjetas. Publica una habilidad de prueba y comprueba que siga en el catálogo tras recargar.
+
+`npm run api` inicia JSON Server en tu computadora. Si publicas la web sin configurar la API pública, el inicio y las rutas estarán disponibles, y el catálogo mostrará un error de carga.
