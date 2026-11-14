@@ -6,6 +6,16 @@
   NODE_VERSION = "24"
 
 [[redirects]]
+  from = "/api/skills"
+  to = "/.netlify/functions/skills"
+  status = 200
+
+[[redirects]]
+  from = "/api/proposals"
+  to = "/.netlify/functions/proposals"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

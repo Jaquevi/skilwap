@@ -41,9 +41,8 @@ La interfaz usa React y Tailwind CSS, y la navegación usa React Router. Para co
 
 ## Publicar en Netlify
 
-1. Importa el repositorio de GitHub y selecciona la rama `main`. [netlify.toml](netlify.toml) define la versión de Node.js, el comando de compilación y la carpeta `dist`. También permite abrir o recargar enlaces como `/habilidades` directamente.
-2. Para usar el catálogo y los formularios en la web publicada, aloja la API en un servicio que pueda ejecutarla y conservar los datos. Debe ofrecer `GET /skills`, `POST /skills` y `POST /proposals` mediante HTTPS y permitir solicitudes desde el dominio de Netlify (CORS).
-3. En las variables de entorno de Netlify, configura `VITE_API_URL` con la URL base pública de la API, sin añadir `/skills` ni una barra final. Después, inicia un nuevo deploy para que Vite incorpore ese valor.
-4. En la URL publicada, abre `/habilidades` directamente, recarga la página y comprueba que aparezcan las tarjetas. Publica una habilidad de prueba y comprueba que siga en el catálogo tras recargar.
+1. Importa el repositorio de GitHub en Netlify y elige la rama `main`. [netlify.toml](netlify.toml) configura la compilación, las rutas de React y las rutas de la API.
+2. Si ya configuraste `VITE_API_URL` para otra API, quita esa variable para que la aplicación use las funciones del mismo sitio en `/api`.
+3. Después del primer deploy, abre `/habilidades` y recarga la página. Publica una habilidad de prueba, vuelve a recargar y comprueba que siga en el catálogo.
 
-`npm run api` inicia JSON Server en tu computadora. Si publicas la web sin configurar la API pública, el inicio y las rutas estarán disponibles, y el catálogo mostrará un error de carga.
+En local, `npm run api` sigue iniciando JSON Server y los datos se guardan en `db.json`. En Netlify, la API usa ese archivo para leer las habilidades iniciales y guarda cada nueva habilidad o propuesta en Netlify Blobs. Las publicaciones locales y las del sitio publicado se guardan por separado.

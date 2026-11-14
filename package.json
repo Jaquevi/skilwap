@@ -11,6 +11,7 @@
     "api": "json-server --watch db.json --host 127.0.0.1 --port 3001"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.1.9",
     "@tailwindcss/vite": "^4.3.5",
     "lucide-react": "^1.71.0",
     "react": "^19.3.1",
