@@ -24,7 +24,7 @@ export const SkillCatalog = ({ searchQuery, setSearchQuery, onSelectSkillToSwap,
   });
 
   return (
-    <section id="skills" className="py-9 sm:py-12 bg-slate-50">
+    <section id="skills" className={`bg-slate-50 ${asPage ? 'py-9 sm:py-12' : 'pt-4 pb-9 sm:pb-12'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}

@@ -11,7 +11,7 @@ export const HowItWorks = ({ asPage = false }) => {
   ];
 
   return (
-    <section id="how-it-works" className={`bg-white border-y border-slate-100 ${asPage ? 'py-9 sm:py-12' : 'pt-4 pb-9 sm:pb-12'}`}>
+    <section id="how-it-works" className={`bg-white border-y border-slate-100 ${asPage ? 'py-9 sm:py-12' : 'py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
