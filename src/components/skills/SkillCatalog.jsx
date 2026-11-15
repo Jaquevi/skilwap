@@ -24,11 +24,11 @@ export const SkillCatalog = ({ searchQuery, setSearchQuery, onSelectSkillToSwap,
   });
 
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section id="skills" className="py-9 sm:py-12 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-3 py-1 rounded-full">
               Catálogo de Intercambio

@@ -11,11 +11,11 @@ export const HowItWorks = ({ asPage = false }) => {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-white border-y border-slate-100">
+    <section id="how-it-works" className="py-9 sm:py-12 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
             Proceso Colaborativo
           </span>
@@ -28,14 +28,14 @@ export const HowItWorks = ({ asPage = false }) => {
         </div>
 
         {/* Steps Grid */}
-        <div className="grid md:grid-cols-3 gap-8 relative">
+        <div className="grid md:grid-cols-3 gap-4 lg:gap-6 relative">
           {HOW_IT_WORKS_STEPS.map((step, idx) => (
             <div
               key={step.step}
-              className="relative p-8 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/5 transition-all duration-300 group"
+              className="relative p-5 lg:p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-950/5 transition-all duration-300 group"
             >
               {/* Step number badge */}
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-4">
                 <div className="w-14 h-14 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center group-hover:scale-110 group-hover:bg-emerald-50 transition-all">
                   {stepIcons[idx]}
                 </div>
@@ -44,14 +44,14 @@ export const HowItWorks = ({ asPage = false }) => {
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-emerald-800 transition-colors">
+              <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-800 transition-colors">
                 {step.title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 {step.description}
               </p>
 
-              <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity">
                 <CheckCircle className="w-4 h-4" />
                 <span>Simple y transparente</span>
               </div>
