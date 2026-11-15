@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { X, CheckCircle, Repeat, Send } from 'lucide-react';
 import { CATEGORIES } from '../../data/mockSkills';
 
-export const SwapModal = ({ onClose, targetSkill, currentUser, onSubmit }) => {
+export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
   const [formData, setFormData] = useState({
-    name: targetSkill ? (currentUser?.name ?? '') : '',
+    name: '',
     teaches: '',
     wants: '',
     category: 'Programación & Tech',
@@ -99,7 +99,6 @@ export const SwapModal = ({ onClose, targetSkill, currentUser, onSubmit }) => {
                     required
                     placeholder="ej. Claudio Morales"
                     id="swap-name"
-                    readOnly={Boolean(targetSkill && currentUser)}
                     maxLength={120}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}

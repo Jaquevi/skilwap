@@ -38,9 +38,10 @@ async function listProposals(_request, user, store) {
 async function sendProposal(request, user, store) {
   const body = await readBody(request);
   const skillId = body?.skillId;
+  const name = safeText(body?.name ?? user.name, 120);
   const teaches = safeText(body?.teaches, 150);
   const message = safeText(body?.message ?? '', 1000);
-  if (!isRecordId(skillId) || !teaches || message === null) {
+  if (!isRecordId(skillId) || !name || !teaches || message === null) {
     return json({ error: 'Revisa los datos de la propuesta.' }, 400);
   }
 
@@ -54,7 +55,7 @@ async function sendProposal(request, user, store) {
     skillId,
     skillName: skill.teaches,
     senderId: user.id,
-    senderName: user.name,
+    senderName: name,
     recipientId: skill.ownerId,
     recipientName: skill.author.name,
     teaches,

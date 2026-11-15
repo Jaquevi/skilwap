@@ -95,6 +95,7 @@ export function App() {
     if (target) {
       await createRecord('proposals', {
         skillId: target.id,
+        name: form.name,
         teaches: form.teaches,
         message: form.message,
       });
@@ -160,7 +161,7 @@ export function App() {
 
       <Footer />
 
-      {swap && <SwapModal targetSkill={swap.target} currentUser={currentUser} onClose={() => setSwap(null)} onSubmit={submitSwap} />}
+      {swap && <SwapModal targetSkill={swap.target} onClose={() => setSwap(null)} onSubmit={submitSwap} />}
       {loginRequest && <LoginModal
         onClose={() => setLoginRequest(null)}
         onLoginSuccess={(user) => {
