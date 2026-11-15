@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { requestApi, updateRecord } from '../../api/client';
 
-const labels = { pending: 'Pendiente', accepted: 'Aceptada', rejected: 'Rechazada' };
+const labels = { registered: 'Registrada', pending: 'Pendiente', accepted: 'Aceptada', rejected: 'Rechazada' };
 
 function ProposalCard({ proposal, received, onAnswer }) {
   const [saving, setSaving] = useState(false);

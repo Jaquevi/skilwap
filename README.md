@@ -27,7 +27,7 @@ JSON Server lee las 10 habilidades iniciales de [db.json](db.json) y las ofrece 
 | `GET /skills` | Carga las habilidades del catálogo. |
 | `POST /skills` | Guarda una habilidad nueva. |
 | `GET /proposals` | Consulta las propuestas enviadas y recibidas en Netlify. |
-| `POST /proposals` | Registra una propuesta para una habilidad de la otra cuenta. |
+| `POST /proposals` | Registra una propuesta para una habilidad del catálogo. |
 | `PATCH /proposals` | Acepta o rechaza una propuesta recibida. |
 
 Con JSON Server, las habilidades publicadas en local se guardan en `db.json`. Las cuentas y sus propuestas se prueban con Netlify Dev o en el sitio publicado.
@@ -56,6 +56,6 @@ En local, `npm run api` sigue iniciando JSON Server y los datos se guardan en `d
 3. En la primera cuenta, abre **Propuestas → Recibidas**. Acepta o rechaza la propuesta y escribe una respuesta si lo deseas.
 4. En la segunda cuenta, abre **Propuestas → Enviadas** y pulsa **Actualizar** para consultar el resultado.
 
-Las credenciales de demostración se entregan por separado. Las habilidades iniciales y las publicaciones hechas sin sesión pueden aparecer en el catálogo, pero solo las habilidades publicadas desde una de las dos cuentas reciben propuestas en la bandeja.
+Las credenciales de demostración se entregan por separado. Las propuestas para habilidades de ejemplo o publicadas por invitados se guardan como registradas, sin destinatario en la bandeja. Las propuestas para habilidades vinculadas a una cuenta requieren iniciar sesión y aparecen en la bandeja del destinatario.
 
 Para probar el flujo completo en local, ejecuta `npx netlify-cli dev` desde el repositorio y abre la dirección que indique. Usa el almacenamiento local de Netlify Dev. Con `npm run api` y `npm run dev` puedes seguir probando el catálogo con JSON Server.

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { X, CheckCircle, Repeat, Send } from 'lucide-react';
 import { CATEGORIES } from '../../data/mockSkills';
 
-export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
+export const SwapModal = ({ onClose, targetSkill, showProposalsLink, onSubmit }) => {
+  const hasRecipient = Boolean(targetSkill?.ownerId);
   const [formData, setFormData] = useState({
     name: '',
     teaches: '',
@@ -56,7 +57,9 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
                 {targetSkill ? `Proponer Swap a ${targetSkill.author.name}` : 'Publicar Nueva Habilidad'}
               </h3>
               <p className="text-xs text-emerald-200">
-                {targetSkill ? 'Conéctate y acuerden el intercambio' : 'Comparte tu talento con la comunidad'}
+                {targetSkill
+                  ? (hasRecipient ? 'Conéctate y acuerden el intercambio' : 'Esta habilidad no tiene una bandeja para responder.')
+                  : 'Comparte tu talento con la comunidad'}
               </p>
             </div>
           </div>
@@ -83,7 +86,7 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
                 {targetSkill ? 'Tu propuesta quedó guardada en SkillSwap.' : 'Tu habilidad ya está disponible en el catálogo.'}
               </p>
               <div className="mt-4 flex flex-wrap justify-center gap-2">
-                {targetSkill && <Link to="/propuestas" state={{ tab: 'sent' }} onClick={onClose} className="rounded-lg bg-emerald-800 px-4 py-2 text-white">Ver propuestas</Link>}
+                {targetSkill && showProposalsLink && <Link to="/propuestas" state={{ tab: 'sent' }} onClick={onClose} className="rounded-lg bg-emerald-800 px-4 py-2 text-white">Ver propuestas</Link>}
                 <button type="button" onClick={onClose} className="rounded-lg border border-slate-300 px-4 py-2">Cerrar</button>
               </div>
             </div>

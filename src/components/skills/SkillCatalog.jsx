@@ -175,7 +175,7 @@ export const SkillCatalog = ({ searchQuery, setSearchQuery, onSelectSkillToSwap,
                   <span className="text-xs font-medium text-slate-500">
                     Modalidad: <strong className="text-slate-700">{item.mode}</strong>
                   </span>
-                  {item.ownerId && item.ownerId !== currentUserId && <button
+                  {(!item.ownerId || item.ownerId !== currentUserId) && <button
                     onClick={() => onSelectSkillToSwap(item)}
                     className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold shadow-xs transition-all"
                   >

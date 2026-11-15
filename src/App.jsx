@@ -74,7 +74,7 @@ export function App() {
 
   function openProposal(target) {
     if (!sessionReady) return;
-    if (!currentUser) {
+    if (!currentUser && target.ownerId) {
       setLoginRequest({ target });
       return;
     }
@@ -161,7 +161,7 @@ export function App() {
 
       <Footer />
 
-      {swap && <SwapModal targetSkill={swap.target} onClose={() => setSwap(null)} onSubmit={submitSwap} />}
+      {swap && <SwapModal targetSkill={swap.target} showProposalsLink={Boolean(currentUser)} onClose={() => setSwap(null)} onSubmit={submitSwap} />}
       {loginRequest && <LoginModal
         onClose={() => setLoginRequest(null)}
         onLoginSuccess={(user) => {
