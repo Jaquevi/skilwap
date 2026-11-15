@@ -51,11 +51,11 @@ En local, `npm run api` sigue iniciando JSON Server y los datos se guardan en `d
 
 ## Demostración con dos cuentas
 
-1. Inicia sesión con la primera cuenta y publica una habilidad nueva.
-2. En otro navegador o una ventana privada, entra con la segunda cuenta, encuentra esa habilidad y pulsa **Proponer Swap**.
-3. En la primera cuenta, abre **Propuestas → Recibidas**. Acepta o rechaza la propuesta y escribe una respuesta si lo deseas.
-4. En la segunda cuenta, abre **Propuestas → Enviadas** y pulsa **Actualizar** para consultar el resultado.
+1. Inicia sesión con `user1` y la contraseña `prueba1`. Publica una habilidad nueva.
+2. En otro navegador o en una ventana privada, inicia sesión con `user2` y la contraseña `prueba2`. Busca la habilidad que acabas de publicar y pulsa **Proponer Swap**. Completa el formulario y envía la propuesta.
+3. Vuelve a la ventana de `user1` y abre **Propuestas → Recibidas**. Si ya tenías la bandeja abierta, pulsa **Actualizar**. Escribe un mensaje opcional y pulsa **Aceptar** o **Rechazar**.
+4. En la ventana de `user2`, abre **Propuestas → Enviadas** y pulsa **Actualizar** para ver el estado y la respuesta.
 
-Las credenciales de demostración se entregan por separado. Las propuestas para habilidades de ejemplo o publicadas por invitados se guardan como registradas, sin destinatario en la bandeja. Las propuestas para habilidades vinculadas a una cuenta requieren iniciar sesión y aparecen en la bandeja del destinatario.
+Estas cuentas son para la demostración en clase. Las propuestas para habilidades de ejemplo o publicadas por invitados se guardan como registradas, sin destinatario en la bandeja. Las propuestas para habilidades vinculadas a una cuenta requieren iniciar sesión y aparecen en la bandeja del destinatario.
 
 Para probar el flujo completo en local, ejecuta `npx netlify-cli dev` desde el repositorio y abre la dirección que indique. Usa el almacenamiento local de Netlify Dev. Con `npm run api` y `npm run dev` puedes seguir probando el catálogo con JSON Server.
