@@ -103,7 +103,7 @@ export function App() {
 
     await createRecord('skills', {
       author: {
-        name: currentUser?.name || form.name,
+        name: form.name,
         avatar: '',
         rating: null,
         location: '',

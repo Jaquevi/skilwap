@@ -19,7 +19,7 @@ export default function handler(request) {
     async POST() {
       const body = await readBody(request);
       const user = await getUser(request);
-      const name = user?.name ?? safeText(body?.author?.name, 120);
+      const name = safeText(body?.author?.name, 120);
       const teaches = safeText(body?.teaches, 150);
       const wants = safeText(body?.wants, 150);
       const description = safeText(body?.description ?? '', 1000);

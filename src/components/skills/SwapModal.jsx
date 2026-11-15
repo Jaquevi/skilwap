@@ -5,7 +5,7 @@ import { CATEGORIES } from '../../data/mockSkills';
 
 export const SwapModal = ({ onClose, targetSkill, currentUser, onSubmit }) => {
   const [formData, setFormData] = useState({
-    name: currentUser?.name ?? '',
+    name: targetSkill ? (currentUser?.name ?? '') : '',
     teaches: '',
     wants: '',
     category: 'Programación & Tech',
@@ -99,7 +99,7 @@ export const SwapModal = ({ onClose, targetSkill, currentUser, onSubmit }) => {
                     required
                     placeholder="ej. Claudio Morales"
                     id="swap-name"
-                    readOnly={Boolean(currentUser)}
+                    readOnly={Boolean(targetSkill && currentUser)}
                     maxLength={120}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
