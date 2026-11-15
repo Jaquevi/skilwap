@@ -43,17 +43,13 @@ export const Navbar = ({ onOpenSwapModal, onOpenLoginModal, currentUser, onLogou
           <div className="hidden lg:flex items-center gap-3">
             {currentUser ? (
               <div className="flex items-center gap-3 pl-2">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200">
-                  <img
-                    src={currentUser.avatar}
-                    alt={currentUser.name}
-                    className="w-7 h-7 rounded-full object-cover border border-emerald-300"
-                  />
-                  <div className="max-w-24 min-w-0 text-left">
-                    <p className="truncate text-xs font-bold text-emerald-950 leading-tight">{currentUser.name}</p>
-                    <p className="truncate text-[10px] text-emerald-700 font-medium leading-none">{currentUser.skill || 'En línea'}</p>
-                  </div>
-                </div>
+                <NavLink
+                  to="/propuestas"
+                  className="rounded-xl bg-emerald-50 px-3 py-1.5 text-center text-xs font-bold text-emerald-900 hover:bg-emerald-100"
+                >
+                  <span className="block">Propuestas</span>
+                  <span className="block text-[10px] font-medium">{currentUser.name}</span>
+                </NavLink>
                 <button
                   onClick={onLogout}
                   title="Cerrar Sesión"
@@ -116,17 +112,14 @@ export const Navbar = ({ onOpenSwapModal, onOpenLoginModal, currentUser, onLogou
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
             {currentUser ? (
               <div className="flex items-center justify-between p-3 rounded-xl bg-emerald-50 border border-emerald-200 mb-1">
-                <div className="flex items-center gap-2.5">
-                  <img
-                    src={currentUser.avatar}
-                    alt={currentUser.name}
-                    className="w-8 h-8 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="text-sm font-bold text-emerald-950">{currentUser.name}</p>
-                    <p className="text-xs text-emerald-700">{currentUser.email}</p>
-                  </div>
-                </div>
+                <NavLink
+                  to="/propuestas"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-lg px-2 py-1 text-sm font-bold text-emerald-900 hover:bg-emerald-100"
+                >
+                  <span className="block">Propuestas</span>
+                  <span className="block text-xs font-medium">{currentUser.name}</span>
+                </NavLink>
                 <button
                   onClick={() => {
                     onLogout();
@@ -146,7 +139,7 @@ export const Navbar = ({ onOpenSwapModal, onOpenLoginModal, currentUser, onLogou
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-emerald-800 text-emerald-900 font-bold text-sm hover:bg-emerald-50 cursor-pointer"
               >
                 <LogIn className="w-4 h-4 text-emerald-800" />
-                Iniciar Sesión / Registrarse
+                Iniciar sesión
               </button>
             )}
 

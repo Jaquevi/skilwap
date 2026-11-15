@@ -3,6 +3,8 @@ import seed from '../../db.json' with { type: 'json' };
 import { CATEGORIES } from '../../src/data/mockSkills.js';
 import { readBody, safeText, json, run, skillsStore } from '../lib/api.mjs';
 
+import { getUser } from '../lib/session.mjs';
+
 const modes = ['Online (Zoom / Meet)', 'Presencial', 'Híbrido'];
 
 export default function handler(request) {
@@ -16,7 +18,8 @@ export default function handler(request) {
     },
     async POST() {
       const body = await readBody(request);
-      const name = safeText(body?.author?.name, 120);
+      const user = await getUser(request);
+      const name = user?.name ?? safeText(body?.author?.name, 120);
       const teaches = safeText(body?.teaches, 150);
       const wants = safeText(body?.wants, 150);
       const description = safeText(body?.description ?? '', 1000);
@@ -27,6 +30,7 @@ export default function handler(request) {
 
       const record = {
         id: randomUUID(),
+        ownerId: user?.id ?? null,
         author: { name, avatar: '', rating: null, location: '' },
         category: body.category,
         teaches,

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { X, CheckCircle, Repeat, Send } from 'lucide-react';
 import { CATEGORIES } from '../../data/mockSkills';
 
-export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
+export const SwapModal = ({ onClose, targetSkill, currentUser, onSubmit }) => {
   const [formData, setFormData] = useState({
-    name: '',
+    name: currentUser?.name ?? '',
     teaches: '',
     wants: '',
     category: 'Programación & Tech',
@@ -34,8 +35,8 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
     try {
       await onSubmit(data, targetSkill);
       setStatus('saved');
-    } catch {
-      setError('No se pudo guardar. Inténtalo de nuevo.');
+    } catch (error) {
+      setError(error.message);
       setStatus('idle');
     }
   }
@@ -81,7 +82,10 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
               <p className="text-sm text-slate-600 max-w-sm mx-auto">
                 {targetSkill ? 'Tu propuesta quedó guardada en SkillSwap.' : 'Tu habilidad ya está disponible en el catálogo.'}
               </p>
-              <button type="button" onClick={onClose} className="mt-4 rounded-lg bg-emerald-800 px-4 py-2 text-white">Cerrar</button>
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
+                {targetSkill && <Link to="/propuestas" state={{ tab: 'sent' }} onClick={onClose} className="rounded-lg bg-emerald-800 px-4 py-2 text-white">Ver propuestas</Link>}
+                <button type="button" onClick={onClose} className="rounded-lg border border-slate-300 px-4 py-2">Cerrar</button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -95,6 +99,8 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
                     required
                     placeholder="ej. Claudio Morales"
                     id="swap-name"
+                    readOnly={Boolean(currentUser)}
+                    maxLength={120}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-hidden focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
@@ -111,6 +117,7 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
                       required
                       placeholder="ej. Guitarra, React, Inglés"
                       id="swap-teaches"
+                      maxLength={150}
                       value={formData.teaches}
                       onChange={(e) => setFormData({ ...formData, teaches: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-emerald-300 bg-emerald-50/30 text-sm focus:outline-hidden focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
@@ -127,6 +134,7 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
                           required
                           placeholder="ej. Python, Francés, Figma"
                           id="swap-wants"
+                        maxLength={150}
                           value={formData.wants}
                           onChange={(e) => setFormData({ ...formData, wants: e.target.value })}
                           className="w-full px-3.5 py-2.5 rounded-xl border border-sky-300 bg-sky-50/30 text-sm focus:outline-hidden focus:border-sky-600 focus:ring-2 focus:ring-sky-100"
@@ -179,6 +187,7 @@ export const SwapModal = ({ onClose, targetSkill, onSubmit }) => {
                     rows="3"
                     placeholder="Cuéntanos un poco sobre tu experiencia o tu motivación..."
                     id="swap-message"
+                    maxLength={1000}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-hidden focus:border-emerald-600"

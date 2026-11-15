@@ -11,7 +11,8 @@ import { SkillCatalog } from './components/skills/SkillCatalog';
 import { SwapModal } from './components/skills/SwapModal';
 import { LoginModal } from './components/auth/LoginModal';
 import { ActionLink } from './components/shared/ActionLink';
-import { createRecord } from './api/client';
+import { createRecord, requestApi } from './api/client';
+import { ProposalsPage } from './components/skills/ProposalsPage';
 import { useSkills } from './api/useSkills';
 
 function CatalogPage(props) {
@@ -44,23 +45,56 @@ export function App() {
   const { pathname } = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [swap, setSwap] = useState(null);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [loginRequest, setLoginRequest] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [sessionReady, setSessionReady] = useState(false);
+  const [sessionError, setSessionError] = useState('');
   const { skills, status, reload } = useSkills();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
 
+  useEffect(() => {
+    const controller = new AbortController();
+    requestApi('session', { signal: controller.signal })
+      .then(({ user }) => {
+        if (!controller.signal.aborted) setCurrentUser(user ?? null);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (!controller.signal.aborted) setSessionReady(true);
+      });
+    return () => controller.abort();
+  }, []);
+
   function openPublish() {
-    setSwap({ target: null });
+    if (sessionReady) setSwap({ target: null });
+  }
+
+  function openProposal(target) {
+    if (!sessionReady) return;
+    if (!currentUser) {
+      setLoginRequest({ target });
+      return;
+    }
+    setSwap({ target });
+  }
+
+  async function logout() {
+    setSessionError('');
+    try {
+      await requestApi('session', { method: 'DELETE' });
+      setCurrentUser(null);
+    } catch (error) {
+      setSessionError(error.message);
+    }
   }
 
   async function submitSwap(form, target) {
     if (target) {
       await createRecord('proposals', {
         skillId: target.id,
-        name: form.name,
         teaches: form.teaches,
         message: form.message,
       });
@@ -70,7 +104,7 @@ export function App() {
     await createRecord('skills', {
       author: {
         name: currentUser?.name || form.name,
-        avatar: currentUser?.avatar || '',
+        avatar: '',
         rating: null,
         location: '',
       },
@@ -89,19 +123,21 @@ export function App() {
     skills,
     status,
     onRetry: reload,
-    onSelectSkillToSwap: (target) => setSwap({ target }),
+    onSelectSkillToSwap: openProposal,
+    currentUserId: currentUser?.id,
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-950">
       <Header
         onOpenSwapModal={openPublish}
-        onOpenLoginModal={() => setIsLoginModalOpen(true)}
+        onOpenLoginModal={() => sessionReady && setLoginRequest({})}
         currentUser={currentUser}
-        onLogout={() => setCurrentUser(null)}
+        onLogout={logout}
       />
 
       <main className="grow">
+        {sessionError && <p role="alert" className="mx-auto max-w-5xl px-4 py-3 text-sm text-red-700">{sessionError}</p>}
         <Routes>
           <Route path="/" element={
             <>
@@ -117,18 +153,23 @@ export function App() {
           <Route path="/como-funciona" element={<><HowItWorks asPage /><CTA onOpenSwapModal={openPublish} /></>} />
           <Route path="/beneficios" element={<><CommunityBenefits asPage /><CTA onOpenSwapModal={openPublish} /></>} />
           <Route path="/testimonios" element={<Testimonials asPage />} />
+          <Route path="/propuestas" element={<ProposalsPage currentUser={currentUser} sessionReady={sessionReady} onOpenLogin={() => setLoginRequest({})} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
       <Footer />
 
-      {swap && <SwapModal targetSkill={swap.target} onClose={() => setSwap(null)} onSubmit={submitSwap} />}
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
-        onLoginSuccess={setCurrentUser}
-      />
+      {swap && <SwapModal targetSkill={swap.target} currentUser={currentUser} onClose={() => setSwap(null)} onSubmit={submitSwap} />}
+      {loginRequest && <LoginModal
+        onClose={() => setLoginRequest(null)}
+        onLoginSuccess={(user) => {
+          setCurrentUser(user);
+          setSessionError('');
+          if (loginRequest.target) setSwap({ target: loginRequest.target });
+          setLoginRequest(null);
+        }}
+      />}
     </div>
   );
 }

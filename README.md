@@ -2,7 +2,7 @@
 
 SkillSwap es un proyecto académico para ofrecer lo que sabes enseñar y encontrar a alguien que pueda enseñarte lo que quieres aprender. El intercambio se plantea sin pagos.
 
-Puedes buscar habilidades, filtrar por categoría, publicar una habilidad y registrar una propuesta de intercambio. El inicio de sesión es una simulación.
+Puedes buscar habilidades, filtrar por categoría, publicar una habilidad y registrar una propuesta de intercambio. La demostración de propuestas usa dos cuentas preconfiguradas.
 
 ## Cómo ejecutar el proyecto
 
@@ -26,9 +26,11 @@ JSON Server lee las 10 habilidades iniciales de [db.json](db.json) y las ofrece 
 | --- | --- |
 | `GET /skills` | Carga las habilidades del catálogo. |
 | `POST /skills` | Guarda una habilidad nueva. |
-| `POST /proposals` | Registra una propuesta para una habilidad existente. |
+| `GET /proposals` | Consulta las propuestas enviadas y recibidas en Netlify. |
+| `POST /proposals` | Registra una propuesta para una habilidad de la otra cuenta. |
+| `PATCH /proposals` | Acepta o rechaza una propuesta recibida. |
 
-Las publicaciones y propuestas se guardan en `db.json` y se conservan al recargar la web.
+Con JSON Server, las habilidades publicadas en local se guardan en `db.json`. Las cuentas y sus propuestas se prueban con Netlify Dev o en el sitio publicado.
 
 ## Dónde está el código
 
@@ -46,3 +48,14 @@ La interfaz usa React y Tailwind CSS, y la navegación usa React Router. Para co
 3. Después del primer deploy, abre `/habilidades` y recarga la página. Publica una habilidad de prueba, vuelve a recargar y comprueba que siga en el catálogo.
 
 En local, `npm run api` sigue iniciando JSON Server y los datos se guardan en `db.json`. En Netlify, la API usa ese archivo para leer las habilidades iniciales y guarda cada nueva habilidad o propuesta en Netlify Blobs. Las publicaciones locales y las del sitio publicado se guardan por separado.
+
+## Demostración con dos cuentas
+
+1. Inicia sesión con la primera cuenta y publica una habilidad nueva.
+2. En otro navegador o una ventana privada, entra con la segunda cuenta, encuentra esa habilidad y pulsa **Proponer Swap**.
+3. En la primera cuenta, abre **Propuestas → Recibidas**. Acepta o rechaza la propuesta y escribe una respuesta si lo deseas.
+4. En la segunda cuenta, abre **Propuestas → Enviadas** y pulsa **Actualizar** para consultar el resultado.
+
+Las credenciales de demostración se entregan por separado. Las habilidades iniciales y las publicaciones hechas sin sesión pueden aparecer en el catálogo, pero solo las habilidades publicadas desde una de las dos cuentas reciben propuestas en la bandeja.
+
+Para probar el flujo completo en local, ejecuta `npx netlify-cli dev` desde el repositorio y abre la dirección que indique. Usa el almacenamiento local de Netlify Dev. Con `npm run api` y `npm run dev` puedes seguir probando el catálogo con JSON Server.
