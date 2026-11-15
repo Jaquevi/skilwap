@@ -13,7 +13,7 @@ export const Hero = ({ searchQuery, setSearchQuery }) => {
   const trendingTags = ['Python', 'Inglés C1', 'Figma & UI', 'Guitarra', 'Marketing Digital', 'React'];
 
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-emerald-50/70 via-white to-slate-50 pt-8 pb-10 sm:pt-10 lg:pb-12">
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-emerald-50/70 via-white to-slate-50 pt-8 pb-4 sm:pt-10">
       {/* Decorative background glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-emerald-200/30 via-emerald-100/40 to-transparent blur-3xl pointer-events-none -z-10" />
 
